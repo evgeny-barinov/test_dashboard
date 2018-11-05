@@ -27,14 +27,17 @@ class View implements ViewInterface
         require($this->view);
         $template = ob_get_clean();
 
-        $layout = '';
-        if ($this->layout && file_exists($this->layout)) {
-            ob_start();
-            require($this->layout);
-            $layout = ob_get_clean();
+        if (!$this->layout) {
+            return $template;
         }
 
-        return $layout ?: $template;
+        $layout = '';
+        if (!file_exists($this->layout)) {
+            throw new \Exception("Layout file {$this->layout} not exists");
+        }
+        ob_start();
+        require($this->layout);
+        return ob_get_clean();
     }
 
     public function setLayout(string $layout): ViewInterface {

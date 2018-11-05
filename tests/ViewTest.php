@@ -46,4 +46,16 @@ class ViewTest extends TestCase
 
         $this->assertEquals('<html><body><span>Hello Layout</span></body></html>', $view->render());
     }
+
+    /**
+     * @expectedException Exception
+     * @expectedExceptionMessage Layout file vfs://root/views/layout/empty.php not exists
+     */
+    public function testExceptionIfLayoutFileNotExists() {
+        $view = new View(vfsStream::url('root/views/'), 'template');
+        $view->setLayout('layout/empty');
+        $view['text'] = 'Hello Layout';
+
+        $view->render();
+    }
 }
