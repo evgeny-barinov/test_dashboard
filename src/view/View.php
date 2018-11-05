@@ -38,7 +38,7 @@ class View implements ViewInterface
     }
 
     public function setLayout(): ViewInterface {
-        // TODO: Implement setLayout() method.
+        return $this;
     }
 
     public function offsetExists($offset) {
