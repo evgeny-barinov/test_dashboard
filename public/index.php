@@ -24,7 +24,7 @@ $controller = new DashboardController($statisticRepository);
 try {
     $app->use($controller)->run();
 } catch (HttpException $e) {
-    App::showErrorPage($e);
+    App::showErrorPage($e, $e->getCode());
 } catch (\Exception $e) {
     App::showErrorPage($e);
 }
