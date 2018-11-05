@@ -24,7 +24,7 @@ $controller = new DashboardController($statisticRepository);
 try {
     $app->use($controller)->run();
 } catch (HttpException $e) {
-    App::showErrorPage($e, $e->getCode());
+    App::showErrorPage($e->getCode(), $e->getMessage());
 } catch (\Exception $e) {
-    App::showErrorPage($e);
+    App::showErrorPage(500, 'Internal Error', $e->getTraceAsString());
 }

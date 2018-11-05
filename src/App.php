@@ -54,12 +54,11 @@ final class App
         throw new \Exception('Application Exception');
     }
 
-    public static function showErrorPage(\Exception $e, $httpCode = 500, $message = '') {
-        $message = $message ?: $e->getMessage();
+    public static function showErrorPage($httpCode = 500, $message = '', $trace = '') {
         http_response_code($httpCode);
         $view = self::view($httpCode, [
                 'message' => $message,
-                'trace' => str_replace(PHP_EOL, '<br>', $e->getTraceAsString())
+                'trace' => str_replace(PHP_EOL, '<br>', $trace)
             ]
         );
         echo $view->render();
