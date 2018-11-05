@@ -10,7 +10,7 @@ abstract class AbstractRepository implements RepositoryInterface
     /**
      * @var \PDO
      */
-    private $db;
+    protected $db;
 
     public function __construct(\PDO $db) {
         $this->db = $db;

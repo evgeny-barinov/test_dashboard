@@ -12,5 +12,5 @@ interface StatisticRepositoryInterface extends RepositoryInterface
      * @param int $from unix timestamp
      * @return Statistic
      */
-    public function getByDateRange(int $to, int $from): Statistic;
+    public function getByDateRange(int $from, int $to): Statistic;
 }
