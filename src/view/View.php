@@ -23,6 +23,10 @@ class View implements ViewInterface
             throw new \Exception("Template file {$this->view} not exists");
         }
 
+        ob_start();
+        require($this->view);
+        $template = ob_get_clean();
+
         $layout = '';
         if ($this->layout && file_exists($this->layout)) {
             ob_start();
@@ -30,15 +34,11 @@ class View implements ViewInterface
             $layout = ob_get_clean();
         }
 
-        ob_start();
-        require ($this->view);
-        $template = ob_get_clean();
-
-        return $template;
+        return $layout ?: $template;
     }
 
     public function setLayout(string $layout): ViewInterface {
-        $this->layout = $this->path . $layout;
+        $this->layout = $this->path . $layout . '.php';
         return $this;
     }
 
