@@ -31,7 +31,6 @@ class View implements ViewInterface
             return $template;
         }
 
-        $layout = '';
         if (!file_exists($this->layout)) {
             throw new \Exception("Layout file {$this->layout} not exists");
         }
