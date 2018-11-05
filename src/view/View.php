@@ -37,7 +37,8 @@ class View implements ViewInterface
         return $template;
     }
 
-    public function setLayout(): ViewInterface {
+    public function setLayout(string $layout): ViewInterface {
+        $this->layout = $this->path . $layout;
         return $this;
     }
 

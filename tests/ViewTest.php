@@ -9,7 +9,9 @@ class ViewTest extends TestCase
     public function setUp() {
         $structure = array(
             'views' => array(
-                'index.php' => "<html><body><?= \$this['text']?></body></html>"
+                'index.php' => "<html><body><?= \$this['text']?></body></html>",
+                'layout.php' => "<html><body><?= \$template?></body></html>",
+                'template.php' => "<span><?= \$this['text']?></span>"
             )
         );
 
@@ -34,7 +36,14 @@ class ViewTest extends TestCase
         $view->render();
     }
 
-    public function testSetLayout() {
-        $this->markTestSkipped();
+    /**
+     * @covers ViewInterface::setLayout
+     */
+    public function testRenderWithLayout() {
+        $view = new View(vfsStream::url('root/views/'), 'template');
+        $view->setLayout('layout');
+        $view['text'] = 'Hello Layout';
+
+        $this->assertEquals('<html><body><span>Hello Layout</span></body></html>', $view->render());
     }
 }
