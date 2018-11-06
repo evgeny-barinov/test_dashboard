@@ -56,7 +56,7 @@ class StatisticRepository
 
     protected function getNumberOfRevenue(): float {
         $sth = $this->db->prepare(implode(' ', [
-            'SELECT SUM(oi.price) as total',
+            'SELECT SUM(oi.price * oi.quantity) as total',
             'FROM orders o',
             'INNER JOIN order_items oi ON o.id=oi.order_id',
             'WHERE o.purchase_date BETWEEN',
