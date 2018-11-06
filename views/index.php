@@ -25,7 +25,7 @@
     <table class="table">
         <tr>
             <td>Orders</td>
-            <td>Revenue</td>
+            <td>Revenue ($)</td>
             <td>Customers</td>
         </tr>
         <tr>
