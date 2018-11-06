@@ -11,8 +11,9 @@ use \Barya\Dashboard\Http\Exception as HttpException;
 define('VIEW_PATH', __DIR__ . '/../views/');
 
 //the easiest config implementation
-if (file_exists(__DIR__ .'/../env.php')) {
-    require(__DIR__ .'/../src/env.php');
+$envFile = __DIR__ .'/../env.php';
+if (file_exists($envFile)) {
+    require($envFile);
 }
 if (!defined('ENV')) define('ENV', 'dev');
 
