@@ -2,7 +2,10 @@
 
 namespace Barya\Dashboard\Entity;
 
-
+/**
+ * Class Statistic
+ * @package Barya\Dashboard\Entity
+ */
 class Statistic
 {
     /**

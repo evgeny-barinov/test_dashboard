@@ -2,7 +2,10 @@
 
 namespace Barya\Dashboard\Http;
 
-
+/**
+ * Class Request
+ * @package Barya\Dashboard\Http
+ */
 class Request implements RequestInterface
 {
     /**

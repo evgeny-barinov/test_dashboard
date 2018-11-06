@@ -4,11 +4,16 @@ namespace Barya\Dashboard;
 
 use Barya\Dashboard\Controller\AbstractController;
 use Barya\Dashboard\Controller\ControllerInterface;
-use Barya\Dashboard\Http\Exception;
 use Barya\Dashboard\Http\RequestInterface;
 use Barya\Dashboard\View\ViewInterface;
 use Barya\Dashboard\Http\Exception as HttpException;
 
+/**
+ * Class App
+ * @package Barya\Dashboard
+ * Simple Facade for this applications
+ * Just to build all components together
+ */
 final class App
 {
     /**

@@ -10,13 +10,18 @@ use \Barya\Dashboard\Http\Exception as HttpException;
 
 define('VIEW_PATH', __DIR__ . '/../views/');
 
+//the easiest config implementation
+if (file_exists(__DIR__ .'/../env.php')) {
+    require(__DIR__ .'/../src/env.php');
+}
+if (!defined('ENV')) define('ENV', 'dev');
+
+$config = require(__DIR__ . '/../config/' . ENV . '.php');
+
 $app = new App(new Request($_GET, $_POST, $_SERVER));
 
 $statisticRepository = new StatisticRepository(
-    new \PDO('mysql:dbname=test_shop;host=mysql',
-        'root',
-        'root'
-    )
+    new \PDO($config['dsn'], $config['user'], $config['password'])
 );
 
 $controller = new DashboardController($statisticRepository);

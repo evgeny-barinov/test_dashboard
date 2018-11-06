@@ -2,7 +2,10 @@
 
 namespace Barya\Dashboard\View;
 
-
+/**
+ * Class View
+ * @package Barya\Dashboard\View
+ */
 class View implements ViewInterface
 {
     private $values = [];

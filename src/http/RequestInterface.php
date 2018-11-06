@@ -2,7 +2,12 @@
 
 namespace Barya\Dashboard\Http;
 
-
+/**
+ * Interface RequestInterface
+ * @package Barya\Dashboard\Http
+ * Http Request used by our Application
+ * It can be an adapter for another implementations, according to PSR-7 for instance
+ */
 interface RequestInterface
 {
     /**

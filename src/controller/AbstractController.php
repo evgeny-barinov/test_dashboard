@@ -5,6 +5,11 @@ namespace Barya\Dashboard\Controller;
 use Barya\Dashboard\Http\RequestInterface;
 use Barya\Dashboard\View\ViewInterface;
 
+/**
+ * Class AbstractController
+ * @package Barya\Dashboard\Controller
+ * Controller for our application must have indexAction
+ */
 abstract class AbstractController implements ControllerInterface
 {
     /**
