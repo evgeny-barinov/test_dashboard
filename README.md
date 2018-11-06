@@ -1,6 +1,20 @@
 # Dashboard Application
 
-Deployment Tips
+## Deployment Tips
+
+### Using Docker
+
+1) Run from project root:
+
+```bash
+ docker-compose up -d --build
+```
+
+2) Add `127.0.0.1 dashboard.local` to */etc/hosts*
+
+---------
+
+### Using your own environment
 
 1) Create env.php in project root directory with content like
 ```php
