@@ -105,6 +105,11 @@ class StatisticRepository
             throw new Exception($this->db->errorInfo());
         }
 
-        return (array) $res;
+        return array_reduce($res, function($result, $item) {
+            $result['days'][] = $item['day'];
+            $result['customers'][] = $item['customers'];
+            $result['orders'][] = $item['orders'];
+            return $result;
+        }, []);
     }
 }

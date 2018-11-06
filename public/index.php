@@ -10,7 +10,7 @@ use \Barya\Dashboard\Http\Exception as HttpException;
 
 define('VIEW_PATH', __DIR__ . '/../views/');
 
-$app = new App(new Request($_POST, $_GET, $_SERVER));
+$app = new App(new Request($_GET, $_POST, $_SERVER));
 
 $statisticRepository = new StatisticRepository(
     new \PDO('mysql:dbname=test_shop;host=mysql',

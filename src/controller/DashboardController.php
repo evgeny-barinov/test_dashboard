@@ -22,8 +22,8 @@ class DashboardController extends AbstractController
      */
     public function indexAction() {
         if ($this->request->getType() == 'POST') {
-            $from = strtotime($this->request->get('from'));
-            $to = strtotime($this->request->get('to'));
+            $from = strtotime("{$this->request->get('from')} midnight");
+            $to = strtotime("{$this->request->get('to')} midnight") + (3600 * 24 - 1);
         } else {
             $from = strtotime('first day of previous month midnight');
             $to = strtotime('first day of this month midnight') - 1;
@@ -32,6 +32,8 @@ class DashboardController extends AbstractController
         $stat = $this->statisticRepository->getByDateRange($from, $to);
 
         return App::view('index', [
+            'from' => date('Y-m-d', $from),
+            'to' => date('Y-m-d', $to),
             'orders' => $stat->getNumberOfOrders(),
             'revenue' => $stat->getNumberOfRevenue(),
             'customers' => $stat->getNumberOfCustomers(),
